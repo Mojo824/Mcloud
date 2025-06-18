@@ -1,4 +1,4 @@
-# ☁️ MCloud
+# MCloud
 
 ![Build](https://img.shields.io/badge/build-passing-brightgreen.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
@@ -6,11 +6,11 @@
 
 **MCloud** is a beginner-friendly, open-source multi-cloud automation utility designed to manage and deploy services across **AWS** and **Azure** directly from your terminal.
 
-> ⚠️ **Currently Under Construction**
+> **Currently Under Construction**
 > 
-> ✅ AWS: EC2, S3, IAM, VPC  
-> 🧱 Azure: Modules under development  
-> 🚧 Static website hosting, security, and DevOps integrations incoming!
+>  AWS: EC2, S3, IAM, VPC  
+>  Azure: Modules under development  
+>  Static website hosting, security, and DevOps integrations incoming!
 
 ---
 
@@ -23,11 +23,11 @@ Choose your Cloud
 1. Azure
 2. AWS
 
-🚀 Features
+ Features
 
-    🔄 Multi-cloud support (AWS + Azure)
+     Multi-cloud support (AWS + Azure)
 
-    🖥️ EC2 deployment with:
+     EC2 deployment with:
 
         Key pair creation/check
 
@@ -35,17 +35,17 @@ Choose your Cloud
 
         Auto-detection of region from AWS CLI config
 
-    💾 S3, EBS volume and snapshot automation
+     S3, EBS volume and snapshot automation
 
-    🕸️ VPC, Elastic IP, Security Group setup
+     VPC, Elastic IP, Security Group setup
 
-    🔐 IAM (users and roles)
+     IAM (users and roles)
 
-    ⚙️ DevOps tooling (CodeDeploy, GitHub Actions – WIP)
+     DevOps tooling (CodeDeploy, GitHub Actions – WIP)
 
-    📦 Clean Bash/Python modular structure
+     Clean Bash/Python modular structure
 
-🧰 Requirements
+ Requirements
 
     Python 3.6+
 
@@ -57,7 +57,7 @@ Choose your Cloud
 
     unzip, curl, sudo privileges (for auto-install)
 
-🏗️ Project Structure
+ Project Structure
 
 ```json 
 
@@ -75,7 +75,7 @@ MCloud/
 
 ```json 
 
-🛠 Setup
+ Setup
 
 # Clone the repo
 git clone https://github.com/Mojo824/MCloud.git
@@ -87,11 +87,11 @@ chmod +x MCloud.sh
 # Run the tool
 bash MCloud.sh
 
-📝 License
+ License
 
 This project is licensed under the MIT License.
 Feel free to use, modify, and distribute!
-🤝 Contributing
+ Contributing
 
 MCloud is in active development, and contributions are highly welcome!
 Steps to contribute:

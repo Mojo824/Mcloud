@@ -1,6 +1,7 @@
 
-# import boto3
-# import time
+import boto3
+import time
+import sys
 
 # ec2 = boto3.client("ec2")
 # ec2_resource = boto3.resource("ec2")
@@ -104,42 +105,64 @@
 
 
 
-#Chatgpt ka code (Niche)
-
+#Chatgpt ka code (Niche) tha 2 ghnte phle
+#ab mera hogya 
 
 
 # Get default region from config
+
 session = boto3.session.Session()
 region = session.region_name
 
 if not region:
-    print("❌ No region configured. Please run 'aws configure' first.")
+    print(" !! No region configured. Please run 'aws configure' first.")
     exit(1)
+    
 
 ec2 = session.client("ec2")
 ec2_resource = session.resource("ec2")
 
-# AMI map based on region
 ami_map_by_region = {
-    "us-east-1": {
-        "ubuntu": "ami-080e1f13689e07408",
-        "amazon-linux": "ami-0c2b8ca1dad447f8a",
-        "debian": "ami-00a6eeb43b1f9f96b",
-        "centos": "ami-0d63de463e6604d0a",
-        "redhat": "ami-052c08d70def0ac62"
+    "us-east-1": {  #Virginia (lgbtq+)
+        "ubuntu": "ami-0fc5d935ebf8bc3bc",
+        "amazon-linux": "ami-0c101f26f147fa7fd",
+        "debian": "ami-033b95fb8079dc481",
+        "rhel": "ami-0aeeebd8d2ab47354",
+        "windows": "ami-03c7c4b1c6d9c6c63"
     },
-    "us-west-2": {
-        "ubuntu": "ami-09ebacdc178ae23c1",
-        "amazon-linux": "ami-0b2f6494ff0b07a0e",
-        "debian": "ami-0dc2d3e4c0f9ebd18",
-        "centos": "ami-05e79b4c0c8e8f1b0",
-        "redhat": "ami-077e31c4939f6a2f3"
+    "ap-south-1": {  #Mumbai(chal htt bkl))
+        "ubuntu": "ami-0f58b397bc5c1f2e8",
+        "amazon-linux": "ami-03f4878755434977f",
+        "debian": "ami-099b1ebd8c5e99e4b",
+        "rhel": "ami-087ecf9ce5d35c82e",
+        "windows": "ami-04f5098988d6f8b1f"
+    },
+    "eu-west-1": { #Ireland (go raibh maith agat)
+        "ubuntu": "ami-01dd271720c1ba44f",
+        "amazon-linux": "ami-050a61c8a6df1c8fe",
+        "debian": "ami-0fdb4e6586fdc52d8",
+        "rhel": "ami-0a8c10f2a82f27c4a",
+        "windows": "ami-0867b0e17e8bb41f6"
+    },
+    "ap-northeast-1": { #Tokyo (Aarigato)
+        "ubuntu": "ami-0310483fb2b488153",
+        "amazon-linux": "ami-0d52744d6551d851e",
+        "debian": "ami-0fcb5b064298f3dba",
+        "rhel": "ami-0b2f6494ff0b07d10",
+        "windows": "ami-0a3f10e6f1f6de43d"
+    },
+    "sa-east-1": {
+        "ubuntu": "ami-0f2c95c3f9c933d41",
+        "amazon-linux": "ami-04e0a32b8b4e4e2fb",
+        "debian": "ami-07b98ecf61c2b03f4",
+        "rhel": "ami-02658c4c4a9c2a6ff",
+        "windows": "ami-0035ddbd72b297f7a"
     }
-    # Add more regions and AMIs if needed
-}
+} # here edit here 
+
 
 if region not in ami_map_by_region:
-    print(f"❌ Region '{region}' not supported in AMI map.")
+    print(f"❌ Region '{region}' not supported in AMI map. You can Edit the code at MCloud/Aws/Compute/Deployec2 and can add your region Or just wait for Future updates :)")
     exit(1)
 
 print(f"\n Using region: {region}")
@@ -156,8 +179,11 @@ if chosen_os not in ami_map:
 ami_id = ami_map[chosen_os]
 
 # Key Pair
-key_pairs = ec2.describe_key_pairs()["KeyPairs"]
-existing_keys = [kp["KeyName"] for kp in key_pairs]
+try :
+    key_pairs = ec2.describe_key_pairs()["KeyPairs"]
+    existing_keys = [kp["KeyName"] for kp in key_pairs]
+except Exception as e :
+    print (e + "\n Check for the permisssions ")
 
 print("\nAvailable Key Pairs:")
 for i, key in enumerate(existing_keys, 1):
@@ -175,7 +201,7 @@ else:
 
 # Security group
 print("\nSecurity Group: Using default security group.")
-print("💡 To create or modify security groups, go to the 'Networking' section of MCloud.")
+print(" To create or modify security groups, go to the 'Networking' section of MCloud.")
 
 # Instance Type
 instance_types = [
@@ -184,7 +210,7 @@ instance_types = [
     "m5.large", "c5.large", "a1.medium"
 ]
 
-print("\nChoose an instance type:")
+print("\nChoose an instance type (Like write their num 1 or 2 ..etc ):")
 for i, itype in enumerate(instance_types, 1):
     print(f"{i}. {itype}")
 
@@ -196,14 +222,37 @@ except:
     instance_type = "t2.micro"
 
 # Launch Instance
-print("\n🚀 Launching EC2 instance...")
+print("\n Launching EC2 instance...")
+# Get first available Subnet ID
+subnets = ec2.describe_subnets()
+subnet_id = subnets['Subnets'][0]['SubnetId'] if subnets['Subnets'] else None
+
+# Get first available Security Group ID
+security_groups = ec2.describe_security_groups()
+sg_id = security_groups['SecurityGroups'][0]['GroupId'] if security_groups['SecurityGroups'] else None
+
+if not subnet_id or not sg_id:
+    print("❌ Could not find a valid subnet or security group.")
+    exit(1)
+
+print(f"Using Subnet ID: {subnet_id}")
+print(f"Using Security Group ID: {sg_id}")
+
 response = ec2.run_instances(
     ImageId=ami_id,
     InstanceType=instance_type,
     KeyName=key_name,
     MinCount=1,
     MaxCount=1,
-    SecurityGroups=['default']
+    NetworkInterfaces=[
+        {
+            'DeviceIndex': 0,
+            'SubnetId': subnet_id,
+            'Groups': [sg_id],
+            'AssociatePublicIpAddress': True
+        }
+    ]
+
 )
 
 instance_id = response["Instances"][0]["InstanceId"]

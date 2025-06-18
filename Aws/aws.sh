@@ -47,5 +47,5 @@ aws configure
 echo -e "What you wanna do \n 1.New Deploy "
 read -p "Your Response " resD
 if [[ "$resD" == "1" ]]; then 
-    python3 $BASE_DIR/Aws/Services.py
+    python3 $BASE_DIR/Aws/ServicesawsD.py
 fi

@@ -12,13 +12,10 @@
 >  Azure: Modules under development  
 >  Static website hosting, security, and DevOps integrations incoming!
 
----
-
-
-````bash
+```bash
 $ bash MCloud.sh
 
-. . . . . . . . . . . . . . . . . .
+````
 Choose your Cloud
 1. Azure
 2. AWS
@@ -73,11 +70,17 @@ MCloud/
 ├── README.md
 └── MCloud.sh
 
+<<<<<<< HEAD
 ```json 
 
  Setup
+=======
+```
+🛠 Setup
+>>>>>>> 94f8017ee34dd78dc7d3a013bf2b76d992615f1d
 
 # Clone the repo
+```bash 
 git clone https://github.com/Mojo824/MCloud.git
 cd MCloud
 
@@ -86,8 +89,13 @@ chmod +x MCloud.sh
 
 # Run the tool
 bash MCloud.sh
+<<<<<<< HEAD
 
  License
+=======
+```
+📝 License
+>>>>>>> 94f8017ee34dd78dc7d3a013bf2b76d992615f1d
 
 This project is licensed under the MIT License.
 Feel free to use, modify, and distribute!

@@ -158,7 +158,8 @@ ami_map_by_region = {
         "rhel": "ami-02658c4c4a9c2a6ff",
         "windows": "ami-0035ddbd72b297f7a"
     }
-} # here edit here 
+    # here edit here 
+} 
 
 
 if region not in ami_map_by_region:

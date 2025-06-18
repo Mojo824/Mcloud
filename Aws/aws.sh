@@ -24,6 +24,7 @@ fi
 
 echo "[*] Checking for boto3 module..."
 
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 if ! python3 -c "import boto3" 2>/dev/null; then
     echo "[!] boto3 not found. Attempting installation..."
     
@@ -47,5 +48,5 @@ aws configure
 echo -e "What you wanna do \n 1.New Deploy "
 read -p "Your Response " resD
 if [[ "$resD" == "1" ]]; then 
-    python3 $BASE_DIR/Aws/ServicesawsD.py
+    python3 $BASE_DIR/ServiceawsD.py
 fi

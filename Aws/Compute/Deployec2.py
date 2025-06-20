@@ -170,6 +170,7 @@ if region not in ami_map_by_region:
     print(f"❌ Region '{region}' not supported in AMI map. You can Edit the code at MCloud/Aws/Compute/Deployec2 and can add your region Or just wait for Future updates :)")
     exit(1)
 
+print ("                    +++Ec3 Deploy Tool MCloud  +++ ")
 print(f"\n Using region: {region}")
 print("\nSupported OS options for your region:")
 ami_map = ami_map_by_region[region]
@@ -291,5 +292,6 @@ host_website = input("\n Do you want to host a static website on this instance? 
 if host_website == "y":
     print(" Redirecting to static website setup...")
     fakeload(" Web Hosting")
+    print (" Feature coming soon ...")
 else:
     print("🎉 Setup complete. You can now SSH into your instance and deploy your applications.")

@@ -45,9 +45,29 @@ fi
 
 aws configure
 
-echo -e "What you wanna do \n 1.New Deploy "
+echo -e "What you wanna do \n 1.New Deploy \n 2.View you Services (List)"
 read -p "Your Response " resD
+
 if [[ "$resD" == "1" ]]; then 
     python3 $BASE_DIR/ServiceawsDM.py
+elif [[ "$resD" == "2" ]]; then 
+    python3 $BASE_DIR/ServiceawsLM.py
+else 
+    echo "Invalid Input Please Re-run"
+fi 
+
+sleep 2
+echo " Thanks for using this MCloud !"
+sleep 2
+echo "Would you like to give it a ⭐ on GitHub?"
+sleep 2
+read -p "Type 'y' to confirm: " choice
+
+if [[ "$choice" == "y" || "$choice" == "Y" ]]; then
+    echo "🎉 You're awesome! Opening GitHub..."
+    xdg-open "https://github.com/Mojo824/" 
+    echo "Please give a star when it opens! ⭐"
+else
+    echo "No worries! Have a great day 😊"
 fi
 echo "Happy Clouding f2 Aws"

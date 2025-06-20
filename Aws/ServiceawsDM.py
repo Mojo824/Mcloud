@@ -32,7 +32,7 @@ if __name__ == "__main__":
             os.system(f"python3 {deployec2_script} ")
         elif b==2:
             fakeload(p1)
-            deploylambda_script = os.path.join(base_dir, "Compute", "Deployec2.py")
+            deploylambda_script = os.path.join(base_dir, "Compute", "Deploylambda.py")
             os.system(f"python3 {deploylambda_script}")
         else :
             tamijse_exit()

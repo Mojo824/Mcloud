@@ -58,7 +58,7 @@ def create_security_group(name, description, vpc_id):
         sys.exit(1)
 
 def main():
-    print("                     ++🔐 AWS Security Group Creator++                       ")
+    print("                     ++ AWS Security Group Creator++                       ")
 
     vpcs = list_vpcs()
     vpc_id = choose_vpc(vpcs)
@@ -77,7 +77,16 @@ def main():
         Inbound_script = os.path.join(base_dir, "Fwrule", "Inbound.py")
         os.system(f"python3 {Inbound_script} {sg_id}")
     else:
-        print("⚠️ No rules added. This group blocks all traffic for now.")
+        print("⚠️ No rules added. This group blocks all traffic for now. (with 0 firewall rules - Inbound )")
+    
+    next_step1 = input("\n👉 Do you want to add Outbound rules now? (y/n): ").strip().lower()
+    if next_step1 == "y":
+        
+        fakeload("Outbound Rule")
+        Outbound_script = os.path.join(base_dir, "Fwrule", "Outbound.py")
+        os.system(f"python3 {Outbound_script} {sg_id}")
+    else:
+        print("⚠️ No rules added. This group blocks all traffic for now. (with 0 firewall rules - Inbound )")
 
 if __name__ == "__main__":
     main()

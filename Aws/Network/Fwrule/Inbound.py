@@ -27,7 +27,7 @@ def main():
 
     sg_id = sys.argv[1]
 
-    print(f"Adding Inbound Rules to Security Group: {sg_id}")
+    print(f"\n [*] Adding Inbound Rules to Security Group: {sg_id}")
 
     while True:
         protocol = input(" Protocol (tcp/udp/all): ").strip().lower()

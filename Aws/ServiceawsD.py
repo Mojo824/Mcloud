@@ -68,8 +68,13 @@ if __name__ == "__main__":
             fakeload(p3)
             Securitygrp_script = os.path.join(base_dir, "Network", "Securitygrp.py")
             os.system(f"python3 {Securitygrp_script}")
+        elif b==3:
+            fakeload(p3)
+            Subnet_script = os.path.join(base_dir, "Network", "Subnet.py")
+            os.system(f"python3 {Subnet_script}")
         else:
             tamijse_exit()
+        
 
     elif a==4:
         b=int(input("Databases : \n1. Rds \n2. Dynomodb \n Your Response : "))

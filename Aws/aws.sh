@@ -50,4 +50,4 @@ read -p "Your Response " resD
 if [[ "$resD" == "1" ]]; then 
     python3 $BASE_DIR/ServiceawsD.py
 fi
-echo "Happy Clouding f1"
+echo "Happy Clouding f2 Aws"

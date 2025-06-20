@@ -48,6 +48,6 @@ aws configure
 echo -e "What you wanna do \n 1.New Deploy "
 read -p "Your Response " resD
 if [[ "$resD" == "1" ]]; then 
-    python3 $BASE_DIR/ServiceawsD.py
+    python3 $BASE_DIR/ServiceawsDM.py
 fi
 echo "Happy Clouding f2 Aws"

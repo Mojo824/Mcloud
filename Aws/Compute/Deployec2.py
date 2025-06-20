@@ -2,7 +2,11 @@
 import boto3
 import time
 import sys
+import os
 
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from ServiceawsDM import fakeload
 # ec2 = boto3.client("ec2")
 # ec2_resource = boto3.resource("ec2")
 
@@ -206,17 +210,25 @@ print(" To create or modify security groups, go to the 'Networking' section of M
 
 # Instance Type
 instance_types = [
-    "t2.micro", "t3.micro", "t3a.micro",
-    "t2.small", "t3.small", "t2.medium", "t3.medium",
-    "m5.large", "c5.large", "a1.medium"
+    "t2.micro [Free Tier : 1 GB RAM, 1 vCPU, EBS ]",
+    "t3.micro [Maybe Free IDK : 1 GB RAM, 2 vCPU (burstable), EBS ]",
+    "t3a.micro [General Purpose : 1 GB RAM, 2 vCPU (burstable), EBS ]",
+    "t2.small [General Purpose : 2 GB RAM, 1 vCPU, EBS ]",
+    "t3.small [General Purpose : 2 GB RAM, 2 vCPU (burstable), EBS ]",
+    "t2.medium [General Purpose : 4 GB RAM, 2 vCPU, EBS ]",
+    "t3.medium [General Purpose : 4 GB RAM, 2 vCPU (burstable), EBS ]",
+    "m5.large [Compute Optimized : 8 GB RAM, 2 vCPU, EBS ]",
+    "c5.large [Compute Optimized : 4 GB RAM, 2 vCPU, EBS ]",
+    "a1.medium [ARM-based : 2 GB RAM, 1 vCPU , EBS ]"
 ]
+
 
 print("\nChoose an instance type (Like write their num 1 or 2 ..etc ):")
 for i, itype in enumerate(instance_types, 1):
     print(f"{i}. {itype}")
 
 try:
-    choice = int(input("Your choice: ")) - 1
+    choice = int(input("/n EBS means it doesn't come with local instance storage.\n t2/t3/t3a series are burstable (means : search yourself )  performance instances.\n [*] t2.micro is the **only confirmed** Free Tier eligible instance (check for t3.micro in your Region).\n Your choice: ")) - 1
     instance_type = instance_types[choice] if 0 <= choice < len(instance_types) else "t2.micro"
 except:
     print("Invalid choice, using default 't2.micro'")
@@ -265,7 +277,7 @@ instance.load()
 
 public_ip = instance.public_ip_address
 
-print("\n✅ EC2 Instance launched successfully!")
+print("\n EC2 Instance launched successfully!")
 print(f"Instance ID: {instance_id}")
 print(f"Public IP: {public_ip}")
 print(f"State: {instance.state['Name']}")
@@ -275,8 +287,9 @@ print(f"AMI: {instance.image_id}")
 print(f"Key Pair: {instance.key_name}")
 
 # Ask about static website hosting
-host_website = input("\n🌐 Do you want to host a static website on this instance? (y/n): ").strip().lower()
+host_website = input("\n Do you want to host a static website on this instance? (y/n): ").strip().lower()
 if host_website == "y":
-    print("🚀 Redirecting to static website setup...")
+    print(" Redirecting to static website setup...")
+    fakeload(" Web Hosting")
 else:
     print("🎉 Setup complete. You can now SSH into your instance and deploy your applications.")

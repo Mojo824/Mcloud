@@ -17,7 +17,7 @@ def fakeload(a):
 if __name__ == "__main__":
 
     print ("                    ++AWS Servises++                    "  )
-    a=int (input  (" AWS Sevices \n1. Compute Services (Ec2,Lambda etc..) \n2. Storage (S3,Ebs etc..) \n3. Networking (Vpc ,elasticip etc..) \n4. Database (Rds , Dynmodb) \n5. DevOps Tools (Code deploy , github action etc..) \n6. Security & IAM( User creation, role etc.. ) \n [*] Your Response :"))
+    a=int (input  (" AWS Sevices \n1. Compute Services (Ec2,Lambda etc..) \n2. Storage (S3,Ebs etc..) \n3. Networking (Vpc ,elasticip etc..) \n4. Database (Rds , Dynmodb) \n "))# Uc.-- 5. DevOps Tools (Code deploy , github action etc..) \n6. Security & IAM( User creation, role etc.. ) \n [*] Your Response :))
     p1 = "Deployment" 
     p2 ="Storage"
     p3 = "Networking"
@@ -55,10 +55,10 @@ if __name__ == "__main__":
             tamijse_exit()
 
     elif a==3:
-        b=int(input("Network Services \n1. VPC \n2. Elastic IP \n3. Security Groups \nYour Response : "))
+        b=int(input("Network Services \n1. VPC \n2. Elastic IP \n3. Security Groups \n Subnet \nYour Response : "))
         if b==1 :
             fakeload(p3)
-            vpc_script = os.path.join(base_dir, "Network", "vpc.py")
+            vpc_script = os.path.join(base_dir, "Network", "Vpc.py")
             os.system(f"python3 {vpc_script}")
         elif b==2:
             fakeload(p3)
@@ -68,7 +68,7 @@ if __name__ == "__main__":
             fakeload(p3)
             Securitygrp_script = os.path.join(base_dir, "Network", "Securitygrp.py")
             os.system(f"python3 {Securitygrp_script}")
-        elif b==3:
+        elif b==4:
             fakeload(p3)
             Subnet_script = os.path.join(base_dir, "Network", "Subnet.py")
             os.system(f"python3 {Subnet_script}")
@@ -84,36 +84,36 @@ if __name__ == "__main__":
             os.system(f"python3 {Rds_script}")
         elif b==2:
             fakeload(p4)
-            Dynmodb_script = os.path.join(base_dir, "Database", "Dynmodb.py")
+            Dynmodb_script = os.path.join(base_dir, "Database", "Dynomodb.py")
             os.system(f"python3 {Dynmodb_script}")
         else :
             tamijse_exit()
 
-    elif a==5:
-        b=int(input("DevOps Tools : \n1. Code Deploy \n2. Github Actions \n Your Response :"))
-        if b==1:
-            fakeload(p5)
-            Codedeploy_script = os.path.join(base_dir, "DevOps", "Codedeploy.py")
-            os.system(f"python3 {Codedeploy_script} ")
-        elif b==2:
-            fakeload(p5)
-            Githubaction_script = os.path.join(base_dir, "DevOps", "Githubaction.py")
-            os.system(f"python3 {Githubaction_script}")
-        else:
-            tamijse_exit()
+    # elif a==5:
+    #     b=int(input("DevOps Tools : \n1. Code Deploy \n2. Github Actions \n Your Response :"))
+    #     if b==1:
+    #         fakeload(p5)
+    #         Codedeploy_script = os.path.join(base_dir, "DevOps", "Codedeploy.py")
+    #         os.system(f"python3 {Codedeploy_script} ")
+    #     elif b==2:
+    #         fakeload(p5)
+    #         Githubaction_script = os.path.join(base_dir, "DevOps", "Githubaction.py")
+    #         os.system(f"python3 {Githubaction_script}")
+    #     else:
+    #         tamijse_exit()
 
-    elif a==6:
-        b=int(input("Security & IAM : \n1. User Creation  \n2. Role creation  "))
-        if b==1:
-            fakeload(p6)
-            Newuser_script = os.path.join(base_dir, "Security & IAM", "Newuser.py")
-            os.system(f"python3 {Newuser_script}")
-        elif b==2:
-            fakeload(p6)
-            Newrole_script = os.path.join(base_dir, "Security & IAM", "Newrole.py")
-            os.system(f"python3 {Newrole_script}")
-        else:
-            tamijse_exit()
+    # elif a==6:
+    #     b=int(input("Security & IAM : \n1. User Creation  \n2. Role creation  "))
+    #     if b==1:
+    #         fakeload(p6)
+    #         Newuser_script = os.path.join(base_dir, "Security & IAM", "Newuser.py")
+    #         os.system(f"python3 {Newuser_script}")
+    #     elif b==2:
+    #         fakeload(p6)
+    #         Newrole_script = os.path.join(base_dir, "Security & IAM", "Newrole.py")
+    #         os.system(f"python3 {Newrole_script}")
+    #     else:
+    #         tamijse_exit()
 
         
 

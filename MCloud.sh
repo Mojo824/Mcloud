@@ -16,6 +16,12 @@ EOF
 sleep 1
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+if ! ping -c 4 google.com > /dev/null 2>&1; then
+    echo "Internet Connection Not Found "
+    echo "please Check internet connection "
+    exit 1
+fi 
+
 echo -e "Choose your Cloud \n1. Azure \n2. Aws "
 read -p "your input (by num)  : " res 
 
